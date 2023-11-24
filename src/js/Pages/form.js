@@ -12,6 +12,9 @@ export function Form() {
 
         <div className='flex flex-start flex-col h-screen pl-10 overflow-y-auto w-full bg-black  '>
             {/*  users information */}
+            <p1>
+                {register.name}
+            </p1>
             <div className=' flex w-full h-16 items-center '>
             </div>
 
@@ -23,7 +26,7 @@ export function Form() {
                     <div className="flex flex-col w-1/2 h-16" >
                         <label className="text-white">Email</label>
                         <div className="h-2"></div>
-                        <input name="name " {...register('email')} />
+                        <input name="email "  {...register('email')} />
                     </div>
 
                     <div className="h-4" />
