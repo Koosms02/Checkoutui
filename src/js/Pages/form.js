@@ -140,8 +140,10 @@ export function Form() {
                             className="pr-2"
                         />
                         <span className="ml-2">
+                            <p1 className="text-white">
+                                Pay with card
 
-                            Pay with card
+                            </p1>
                         </span>
                     </label>
 
@@ -155,7 +157,9 @@ export function Form() {
                         />
                         {/* <div className="w-4" /> */}
                         <span className="ml-2">
-                            Pay with cash
+                            <p1 className="text-white">
+                                Pay cash
+                            </p1>
                         </span>
                     </label>
                 </div>
