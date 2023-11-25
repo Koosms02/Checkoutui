@@ -1,89 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form"
-
+import { currentWindowSize } from "../../Utils/utils";
+import "../../css/pages/forms.css"
 
 export function Form() {
+    const w = currentWindowSize().innerWidth
+    console.log(w)
+    const { register, handleSubmit } = useForm()
+    const [movePage, setMovePage] = useState({
+        "customer": true,
+        "shipping": false,
+        "payments": false
+    })
 
-    const { register, handleSubmit } = useForm();
+
+    const [paymentChoice, setPaymentChoice] = useState({ "cash": false, "online": true })
     const handleRegistration = (data) => console.log(data)
-
 
     return (
 
         <div className='flex flex-start flex-col h-screen pl-10 overflow-y-auto w-full bg-black  '>
             {/*  users information */}
-            <p1>
-                {register.name}
-            </p1>
-            <div className=' flex w-full h-16 items-center '>
-            </div>
-
-            <div className=' flex w-full h-screen pt-16 flex-col'>
-                <h3 className='text-white'>Who is placing an order?</h3>
-
-                <form onSubmit={handleSubmit(handleRegistration)}>
-                    <div className="h-10" />
-                    <div className="flex flex-col w-1/2 h-16" >
-                        <label className="text-white">Email</label>
-                        <div className="h-2"></div>
-                        <input name="email "  {...register('email')} />
-                    </div>
-
-                    <div className="h-4" />
-                    <div className="flex flex-row w-1/2 h-16" >
-                        <div className="pr-10">
-                            <label className="text-white">First name</label>
-                            <div className="h-2"></div>
-                            <input name="name " {...register('name')} />
-                        </div>
-
-                        <div>
-                            <label className="text-white">second name</label>
-                            <div className="h-2"></div>
-                            <input name="name " {...register('second name')} />
-                        </div>
-
-
-                    </div>
-
-                    <div className="h-10" />
-
-                    <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
-                        <h3>Proceed to Shipping</h3>
-                    </div>
-
-                </form>
-
-            </div>
 
             <div className=' flex w-full h-16 items-center '>
             </div>
+
+            {movePage.customer == true &&
+                <div className=' flex w-full h-screen pt-16 flex-col'>
+                    <h3 className='text-white'>Who is placing an order?</h3>
+
+                    <form onSubmit={handleSubmit(handleRegistration)}>
+                        <div className="h-10" />
+                        <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
+                            <label className="text-white">Email</label>
+                            <div className="h-2"></div>
+                            <input name="email "  {...register('email')} />
+                        </div>
+
+                        <div className="h-4" />
+                        <div className="flex flex-row justify-between w-full max-w-md h-16  pr-10" >
+                            <div className="pr-10 ">
+                                <label className="text-white">First name</label>
+                                <div className="h-2"></div>
+                                <input name="name "  {...register('name')} />
+                            </div>
+
+                            <div className=" ">
+                                <label className="text-white">Second name</label>
+                                <div className="h-2"></div>
+                                <input name="name " {...register('second name')} />
+                            </div>
+
+
+                        </div>
+
+                        <div className="h-10" />
+
+                        <div type="submit" onClick={() => {
+                            setMovePage({ "customer": false, "shipping": true, "payments": false })
+                            // setMovePage({ "customer": false, "payments": true })
+                            console.log(movePage)
+                        }} className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
+                            <h3>Proceed to Shipping</h3>
+                        </div>
+
+                    </form>
+
+                </div>}
+
 
 
             {/* Proceeding to the order  */}
 
-            <div className=' flex w-full h-16 items-center '>
-            </div>
 
-            <div className=' flex w-full h-screen pt-16 flex-col'>
+
+            {movePage.shipping == true && <div className=' flex w-full h-screen pt-16 flex-col'>
                 <h3 className='text-white'>Where would you like the order be sent?</h3>
 
                 <form onSubmit={handleSubmit(handleRegistration)}>
                     <div className="h-10" />
-                    <div className="flex flex-col w-1/2 h-16 " >
+                    <div className="flex flex-col w-full pr-10 h-16 max-w-md" >
                         <label className="text-white">Country</label>
                         <div className="h-2"></div>
                         <input name="name " {...register('country')} />
                     </div>
 
-                    <div className="flex flex-col w-1/2 h-16 " >
+                    <div className="flex flex-col w-full pr-10 max-w-md h-16 " >
                         <label className="text-white">Address</label>
                         <div className="h-2"></div>
                         <input name="name " {...register('Address')} />
                     </div>
 
                     <div className="h-4" />
-                    <div className="flex flex-row w-1/2 h-16" >
+                    <div className="flex flex-row w-full justify-between pr-10 max-w-md h-16" >
                         <div className="pr-10">
                             <label className="text-white">City</label>
                             <div className="h-2"></div>
@@ -99,8 +108,8 @@ export function Form() {
 
                     </div>
 
-
-                    <div className="flex flex-col w-1/2 h-16 " >
+                    <div className="h-4" />
+                    <div className="flex flex-col w-full max-w-md  pr-10 h-16 " >
                         <label className="text-white">Phone number*</label>
                         <div className="h-2"></div>
                         <input name="name " {...register('Address')} />
@@ -109,7 +118,9 @@ export function Form() {
 
                     <div className="h-10" />
 
-                    <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
+                    <div type="submit" onClick={() => {
+                        setMovePage({ "customer": false, "shipping": false, "payments": true })
+                    }} className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
                         <h3>Proceed to payments</h3>
                     </div>
 
@@ -117,18 +128,14 @@ export function Form() {
 
                 </form>
 
-            </div>
+            </div>}
 
-            <div className=' flex w-full h-16 items-center '>
-            </div>
 
 
             {/* payment details */}
 
-            <div className=' flex w-full h-16 items-center '>
-            </div>
 
-            <div className=' flex w-full h-screen pt-16 flex-col'>
+            {movePage.payments == true && < div className=' flex w-full h-screen pt-16 flex-col'>
                 <h3 className='text-white'>How would you like to pay?</h3>
 
                 <div className="h-10" />
@@ -137,9 +144,9 @@ export function Form() {
                     <label>
                         <input
                             type="radio"
-                            value="option1"
-                            checked={false}
-                            //   onChange={}
+                            value="online"
+                            checked={paymentChoice.online}
+                            onChange={() => { setPaymentChoice({ "cash": false, "online": true }) }}
                             className="pr-2"
                         />
                         <span className="ml-2">
@@ -154,9 +161,10 @@ export function Form() {
                     <label>
                         <input
                             type="radio"
-                            value="option2"
-                            checked={true}
-                        //   onChange={handleOptionChange}
+                            value="cash"
+                            checked={paymentChoice.cash}
+                            //   onChange={handleOptionChange}
+                            onChange={() => { setPaymentChoice({ "cash": true, "online": false }) }}
                         />
                         {/* <div className="w-4" /> */}
                         <span className="ml-2">
@@ -167,30 +175,30 @@ export function Form() {
                     </label>
                 </div>
 
-                <form onSubmit={handleSubmit(handleRegistration)}>
+                {paymentChoice.cash !== true && <form onSubmit={handleSubmit(handleRegistration)}>
                     <div className="h-4" />
-                    <div className="flex flex-col w-1/2 h-16 " >
-                        <label className="text-white">Country</label>
+                    <div className="flex flex-col w-full pr-10 max-w-md h-16 " >
+                        <label className="text-white">Name on card</label>
                         <div className="h-2"></div>
                         <input name="name " {...register('country')} />
                     </div>
-
-                    <div className="flex flex-col w-1/2 h-16 " >
-                        <label className="text-white">Address</label>
+                    <div className="h-4" />
+                    <div className="flex flex-col w-full h-16 pr-10 max-w-md " >
+                        <label className="text-white">card number</label>
                         <div className="h-2"></div>
                         <input name="name " {...register('Address')} />
                     </div>
 
                     <div className="h-4" />
-                    <div className="flex flex-row w-1/2 h-16" >
+                    <div className="flex flex-row w-full pr-10 max-w-md h-16" >
                         <div className="pr-10">
-                            <label className="text-white">City</label>
+                            <label className="text-white">Expiration</label>
                             <div className="h-2"></div>
                             <input name="name " {...register('City')} />
                         </div>
 
                         <div>
-                            <label className="text-white">Zip Code</label>
+                            <label className="text-white">CVVs</label>
                             <div className="h-2"></div>
                             <input name="name " {...register('Zip Code')} />
                         </div>
@@ -199,30 +207,25 @@ export function Form() {
                     </div>
 
 
-                    <div className="flex flex-col w-1/2 h-16 " >
-                        <label className="text-white">Phone number*</label>
-                        <div className="h-2"></div>
-                        <input name="name " {...register('Address')} />
-                    </div>
 
 
                     <div className="h-10" />
 
                     <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
-                        <h3>Proceed to payments</h3>
+                        <h3>make payments</h3>
                     </div>
 
 
 
-                </form>
+                </form>}
 
+                {paymentChoice.cash === true && <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
+                    <h3>Continue</h3>
+                </div>}
             </div>
-
-            <div className=' flex w-full h-16 items-center '>
-            </div>
-
-
-
-        </div>
+            }
+        </div >
     );
 }
+
+
