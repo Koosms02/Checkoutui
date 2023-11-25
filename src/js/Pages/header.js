@@ -12,7 +12,7 @@ function header() {
                 <h3 className='text-white'>DAW</h3>
             </div>
 
-            <div className=' flex w-full h-screen pt-16 '>
+            <div className=' flex w-full h-screen pt-16  '>
                 <h3 className='text-white'>Checkout</h3>
             </div>
         </div>

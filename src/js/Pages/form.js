@@ -22,8 +22,7 @@ export function Form() {
         <div className='flex flex-start flex-col h-screen pl-10 overflow-y-auto w-full bg-black  '>
             {/*  users information */}
 
-            <div className=' flex w-full h-16 items-center '>
-            </div>
+
 
             {movePage.customer == true &&
                 <div className=' flex w-full h-screen pt-16 flex-col'>
