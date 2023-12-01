@@ -1,26 +1,25 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
 import CheckOut from './js/CheckOut';
-import OrderPlaced from './js/Pages/Order_Place';
+// import CheckOut from './js/CheckOut';
+// import OrderPlaced from './js/Pages/Order_Place';
 
 const App = () => {
     return (
-        <Router>
-            <div>
+        <div>
+            <Router>
                 <Routes>
-                    <Route path="/" exact component={<CheckOut />} />
-                    <Route path="/order" component={<OrderPlaced />} />
-                </Routes>
-                {/* <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                    </ul>
-                </nav> */}
 
-                {/* <Route path="/order" component={OrderPlaced} /> */}
-            </div>
-        </Router>
+                    <Route path="/"  >
+                        <CheckOut />
+
+                    </Route>
+                    {/* <Route path="/order" component={<OrderPlaced />} /> */}
+
+
+                </Routes>
+            </Router>
+        </div>
     );
 };
 
