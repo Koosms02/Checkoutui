@@ -2,8 +2,6 @@ import React from 'react';
 import Header from './Pages/header';
 import { Form } from './Pages/form';
 
-
-
 function CheckOut() {
 
   return (

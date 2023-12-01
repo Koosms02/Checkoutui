@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import { currentWindowSize } from "../../Utils/utils";
+import { currentWindowSize } from "../../Utils/utils"
 import "../../css/pages/forms.css"
+
+import { useNavigate } from 'react-router-dom';
 
 export function Form() {
     const w = currentWindowSize().innerWidth
-    console.log(w)
+    const Navigate = useNavigate()
+
     const { register, handleSubmit } = useForm()
     // const [movePage, setMovePage] = useState({
     //     "customer": true,
@@ -15,7 +18,12 @@ export function Form() {
 
 
     const [paymentChoice, setPaymentChoice] = useState({ "cash": false, "online": true })
-    const handleRegistration = (data) => console.log(data)
+    const handleRegistration = () => {
+        //should pay the data
+        Navigate("/payment")
+
+
+    }
 
     return (
         <div className='flex flex-start flex-col h-screen pl-10 overflow-y-auto w-full bg-black  '>
