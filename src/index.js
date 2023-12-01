@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/index.css';
 
-import CheckOut from './js/CheckOut'
+// import CheckOut from './js/CheckOut'
+import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CheckOut />
+    <App />
   </React.StrictMode>
 );
 
