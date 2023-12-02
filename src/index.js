@@ -8,7 +8,6 @@ import CheckOut from './js/CheckOut';
 import OrderPlaced from './js/Pages/Order_Place';
 import {
   RouterProvider, createBrowserRouter,
-
 } from 'react-router-dom';
 // import reportWebVitals from './reportWebVitals';
 

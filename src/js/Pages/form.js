@@ -123,10 +123,6 @@ export function Form() {
                 </form>
 
             </div>
-
-
-
-
         </div >
     );
 }
