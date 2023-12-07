@@ -1,2 +1,77 @@
--adding tailwind
+<!-- -adding tailwind
 -fixing the file structure
+
+
+
+   {
+                movePage.shipping == true &&
+
+                <form onSubmit={handleSubmit(handleRegistration)} className="w-full">
+
+                    <div className="flex w-full h-screen pt-16 flex-col">
+                        <h3 className='text-white'>Which of this region are you from ?</h3>
+
+                        <div className="h-20" />
+                        <div className="flex flex-col h-full  w-1/2">
+                            {/* {<label>
+                            <input
+                                type="radio"
+                                value="online"
+                                checked={paymentChoice.online}
+                                onChange={() => { }}
+                                className="pr-2"
+                            />
+                            <span className="ml-2">
+                                <p1 className="text-white">
+                                    {region[0]["main_area"]}
+                                </p1>
+                            </span>
+                        </label>} */}
+
+
+                            {region.map((region, index) => (
+                                <div key={index}>
+
+                                    {/* {index != 0 && <div className="h-10" />} */}
+                                    <div onClick={() => handleRegionSelection(index)} className="h-12 bg-white ">
+                                        <p>{region.locations}</p>
+                                    </div>
+                                    <div className="h-4" />
+
+                                    {/* <label>
+                                        <input
+                                            type="radio"
+                                            value="online"
+                                            checked={region.selected}
+                                            onChange={() => handleRegionSelection(index)}
+                                            className="pr-2"
+                                        />
+                                        <span className="ml-2">
+                                            <p1 className="text-white ">
+                                                {region["main_area"]}
+                                            
+                                            </p1>
+
+                                        </span>
+                                    </label> */}
+                                    {/* <p className="text-white h-full ">{region["locations"] + ","}</p> */}
+
+
+                                </div>
+
+                            ))}
+
+                            <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
+                                <button type="submit" className="h-12 w-44">submit</button>
+                                {/* <h3>Proceed </h3> */}
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div >
+
+                </form >
+            } -->

@@ -22,7 +22,7 @@ export function Form() {
     const w = currentWindowSize().innerWidth
     // const Navigate = useNavigate()
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [movePage, setMovePage] = useState({
         "customer": true,
         "shipping": false,
@@ -95,39 +95,66 @@ export function Form() {
                     <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
                         <label className="text-white">Name</label>
                         <div className="h-2"></div>
-                        <input name="name " className="border-b border-white bg-black text-white outline-none" {...register('name')} />
+                        <input name="name " className="border-b border-white bg-black text-white outline-none" placeholder="e.g john" {...register('name', {
+                            required: 'Name is required',
+                            message: 'Name is required'
+                        })} />
                     </div>
+                    <p className="text-red-500">{errors.name?.message}</p>
 
                     <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
                         <label className="text-white">Email</label>
                         <div className="h-2"></div>
-                        <input name="email " className="border-b border-white bg-black text-white outline-none"  {...register('email')} />
+                        <input name="email " className="border-b border-white bg-black text-white outline-none" placeholder="e.g koosms02@gmail.com"  {...register('email', {
+                            required: 'Email is required',
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                message: 'Invalid email address',
+                            },
+                        })} />
+                    </div>
+                    <p className="text-red-500 font-10">{errors.email?.message}</p>
+
+                    <div className="h-2" />
+                    <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
+                        <label className="text-white">Product to Order</label>
+                        <div className="h-2"></div>
+                        <input name="Order " className="border-b border-white bg-black text-white outline-none" placeholder="e.g Marijuana"  {...register('Order')} />
                     </div>
 
-                    <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
-                        <label className="text-white">Order</label>
-                        <div className="h-2"></div>
-                        <input name="Order " className="border-b border-white bg-black text-white outline-none"  {...register('Order')} />
-                    </div>
+                    <div className="h-2" />
 
                     <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
                         <label className="text-white">Address</label>
                         <div className="h-2"></div>
-                        <input name="Address " className="border-b border-white bg-black text-white outline-none" {...register('Address')} />
+                        <input name="Address " className="border-b border-white bg-black text-white outline-none" placeholder="Suzy Queue 4455 Landing Lange, APT 4 Louisville, KY 40018-1234" {...register('Address')} />
                     </div>
+
+                    <div className="h-2" />
 
                     <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
                         <label className="text-white">Total Amount</label>
                         <div className="h-2"></div>
-                        <input name="Total " className="border-b border-white bg-black text-white outline-none" {...register('Total')} />
+                        <input name="Total " className="border-b border-white bg-black text-white outline-none" placeholder="e.g 10000"  {...register('purchase_price', {
+                            required: 'pleeader enter the price ',
+                            pattern: {
+                                value: /^[0-9]+$/,
+                                message: 'Please enter a valid number',
+                            },
+                        })} />
                     </div>
 
+                    <p className="text-red-500 font-10">{errors.purchase_price?.message}</p>
+
+                    <div className="h-2" />
                     <div className="flex flex-col w-full max-w-md pr-10 h-16 " >
                         <label className="text-white">Day of Delivery</label>
                         <div className="h-2"></div>
-                        <input name="day of delivery " className="border-b border-white bg-black text-white outline-none" {...register('DayOfDelivery')} />
+                        <input name="day of delivery " className="border-b border-white bg-black text-white outline-none" placeholder="today 12:00" {...register('DayOfDelivery')} />
                     </div>
                     <div className="h-10" />
+
+                    {/* <p className="text-red-500 font-10">{errors.purchase_price?.message}</p> */}
                     {/* region for location  */}
 
 
@@ -177,78 +204,24 @@ export function Form() {
 
             </div>}
 
-            {
-                movePage.shipping == true &&
+            {movePage.shipping == true && <div className="flex w-full h-screen pt-16 flex-col pr-10">
 
-                <form onSubmit={handleSubmit(handleRegistration)}>
+                <h3 className='text-white'>From which regions are you from ?</h3>
 
-                    <div className="flex w-full h-screen pt-16 flex-col">
-                        <h3 className='text-white'>Which of this region are you from ?</h3>
+                <form className="w-full flex flex-col">
+                    {
+                        region.map((res, index) => (
 
-                        <div className="h-20" />
-                        <div className="flex flex-col h-full  w-1/2">
-                            {/* {<label>
-                            <input
-                                type="radio"
-                                value="online"
-                                checked={paymentChoice.online}
-                                onChange={() => { }}
-                                className="pr-2"
-                            />
-                            <span className="ml-2">
-                                <p1 className="text-white">
-                                    {region[0]["main_area"]}
-                                </p1>
-                            </span>
-                        </label>} */}
+                            <div key={index} className="h-20 w-full mt-2 bg-red-100 pr-10">
+                                <p>{res.main_area}</p>
+                                <p>{res.locations}</p>
+                            </div>))
+                    }
+                </form>
+
+            </div>}
 
 
-                            {region.map((region, index) => (
-                                <div key={index}>
-
-                                    {/* {index != 0 && <div className="h-10" />} */}
-                                    <div onClick={() => handleRegionSelection(index)} className="h-12 bg-white ">
-                                        <p>{region.locations}</p>
-                                    </div>
-                                    <div className="h-4" />
-
-                                    {/* <label>
-                                        <input
-                                            type="radio"
-                                            value="online"
-                                            checked={region.selected}
-                                            onChange={() => handleRegionSelection(index)}
-                                            className="pr-2"
-                                        />
-                                        <span className="ml-2">
-                                            <p1 className="text-white ">
-                                                {region["main_area"]}
-                                            
-                                            </p1>
-
-                                        </span>
-                                    </label> */}
-                                    {/* <p className="text-white h-full ">{region["locations"] + ","}</p> */}
-
-
-                                </div>
-
-                            ))}
-
-                            <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
-                                <button type="submit" className="h-12 w-44">submit</button>
-                                {/* <h3>Proceed </h3> */}
-                            </div>
-
-                        </div>
-
-
-
-
-                    </div >
-
-                </form >
-            }
         </div >
     );
 }
