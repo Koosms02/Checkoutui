@@ -1,10 +1,11 @@
 import React from 'react'
 // import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
-import CheckOut from './pages/CheckOut';
+
+import Home from './pages/HomePage';
 
 const App = () => {
     return (
-        <CheckOut />
+        <Home/>
     );
 };
 
