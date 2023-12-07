@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import { currentWindowSize } from "../../Utils/utils"
+import { currentWindowSize } from "../Utils/utils"
 
-import "../../css/pages/forms.css"
-import makePayment from "../../api/api"
+// import "../../css/pages/forms.css"
+import makePayment from "../api/api"
 // import delivery_locations from "../../Utils/delivery_locations"
 
 // import { useNavigate } from 'react-router-dom';

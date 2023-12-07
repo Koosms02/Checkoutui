@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/index.css';
+import './index.css';
 
 // import CheckOut from './js/CheckOut'
 import App from './App';
-import CheckOut from './js/CheckOut';
-import OrderPlaced from './js/Pages/Order_Place';
+import CheckOut from './pages/CheckOut';
+import OrderPlaced from './components/Order_Place';
 import {
   RouterProvider, createBrowserRouter,
 } from 'react-router-dom';

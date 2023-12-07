@@ -1,5 +1,5 @@
 import React from "react";
-import { currentWindowSize } from "../../Utils/utils";
+import { currentWindowSize } from "../Utils/utils";
 
 export function Items() {
 

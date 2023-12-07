@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Pages/header';
-import { Form } from './Pages/form';
+import Header from '../components/header';
+import { Form } from '../components/form';
 
 function CheckOut() {
 
