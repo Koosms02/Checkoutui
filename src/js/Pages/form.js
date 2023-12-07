@@ -56,20 +56,15 @@ export function Form() {
                 "payments": false
             })
         } else if (movePage.shipping === true) {
-            setMovePage({
-                "customer": false,
-                "shipping": false,
-                "payments": true
-            })
-        } else if (movePage.payments === true) {
-            setMovePage({
-                "customer": false,
-                "shipping": true,
-                "payments": true
-            })
+           for(var Value in region){     
+                if(Value.selected === true){
+                    console.log(Value)
+                }
+                console.log(Value)
 
-            // navigate somewhere
-        }
+           }
+            
+        } 
         //should pay the data
         // Navigate("/payment")
 
@@ -170,10 +165,10 @@ export function Form() {
                                 onChange={() => { setPaymentChoice({ "cash": false, "online": true }) }}
                                 className="pr-2"
                             />
-                            <span className="ml-2">
-                                <p1 className="text-white">
+                            <span className="ml-2 text-white">
+                                {/* <p1 className="text-white"> */}
                                     Pay with card
-                                </p1>
+                                {/* </p1> */}
                             </span>
                         </label>
 
@@ -187,10 +182,10 @@ export function Form() {
                                 onChange={() => { setPaymentChoice({ "cash": true, "online": false }) }}
                             />
                             {/* <div className="w-4" /> */}
-                            <span className="ml-2">
-                                <p1 className="text-white">
+                            <span className="ml-2 text-white">
+                                {/* <p1 className=""> */}
                                     Pay cash
-                                </p1>
+                                
                             </span>
                         </label>
                     </div>
@@ -207,16 +202,16 @@ export function Form() {
             {movePage.shipping == true && <div className="flex w-full h-screen pt-16 flex-col pr-10">
 
                 <h3 className='text-white'>From which regions are you from ?</h3>
-
-                <form className="w-full flex flex-col">
+                <form className="w-full flex flex-col" onSubmit={handleSubmit}>
+                <div className="h-20"/>
                     {
                         region.map((res, index) => (
 
-                            <div key={index} className="w-full mx-auto mt-2 pl-6 bg-red-100 px-4 max-w-screen-md">
-                                <div className="w-full flex flex-row">
+                            <div key={index} onClick={()=>handleRegionSelection(index)} className= "hover:bg-blue-300 w-full  mt-2 pl-6 bg-white px-4 max-w-screen-md rounded">
+                                <div className="w-full flex flex-row justify-between items-center ">
 
-                                    <p className="mt-2">{res.main_area}</p>
-                                    <p>{res.price}</p>
+                                    <p className="mt-2 font-bold ">{res.main_area}</p>
+                                    <p className="font-bold ">R {res.price}</p>
 
                                 </div>
                                 <div>
@@ -228,9 +223,10 @@ export function Form() {
 
                     <div className="h-10 " />
                     <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
-                        <button type="submit" className="h-12 w-44">submit</button>
+                        <button type="submit" className="h-12 w-44">proceed to payment</button>
                         {/* <h3>Proceed </h3> */}
                     </div>
+                    <div className="h-10"/>
                 </form>
 
             </div>}
