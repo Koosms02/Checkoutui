@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { currentWindowSize } from "../../Utils/utils"
 
 import "../../css/pages/forms.css"
+import makePayment from "../../api/api"
 // import delivery_locations from "../../Utils/delivery_locations"
 
 // import { useNavigate } from 'react-router-dom';
@@ -32,13 +33,16 @@ export function Form() {
 
     // eslint-disable-next-line no-unused-vars
     const [region, setRegion] = useState(delivery_locations.map(location => ({ ...location, selected: false })));
-
+    // const [selected , setSelected ] = useState()
+    const [userInfo , setUserInfo] = useState()
 
 
 
     const [paymentChoice, setPaymentChoice] = useState({ "cash": false, "online": true })
     // eslint-disable-next-line no-unused-vars
     const handleRegionSelection = (index) => {
+        // setSelected()
+        setUserInfo(prevData => ({...prevData , location: region[index]}))
         setRegion((prevLocations) => {
             const updatedLocations = prevLocations.map((location, i) => ({
                 ...location,
@@ -47,22 +51,23 @@ export function Form() {
             return updatedLocations;
         });
     }
-    const handleRegistration = () => {
-
+    const handleRegistration = async (data) => {
+        
         if (movePage.customer === true) {
+            setUserInfo(data)
             setMovePage({
                 "customer": false,
                 "shipping": true,
                 "payments": false
             })
         } else if (movePage.shipping === true) {
-           for(var Value in region){     
-                if(Value.selected === true){
-                    console.log(Value)
-                }
-                console.log(Value)
 
-           }
+            // setUserInfo(prevData => ({...prevData , location: selected
+            // console.log(userInfo)
+            
+            const link = await makePayment(userInfo);
+
+            window.location.href = link;
             
         } 
         //should pay the data
@@ -70,6 +75,7 @@ export function Form() {
 
 
     }
+
 
     return (
         <div className='flex flex-start flex-col h-screen pl-10 overflow-y-auto w-full bg-black  '>
@@ -202,7 +208,7 @@ export function Form() {
             {movePage.shipping == true && <div className="flex w-full h-screen pt-16 flex-col pr-10">
 
                 <h3 className='text-white'>From which regions are you from ?</h3>
-                <form className="w-full flex flex-col" onSubmit={handleSubmit}>
+                <form className="w-full flex flex-col" onSubmit={handleSubmit(handleRegistration)}>
                 <div className="h-20"/>
                     {
                         region.map((res, index) => (
