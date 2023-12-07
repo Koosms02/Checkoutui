@@ -213,7 +213,12 @@ export function Form() {
                         region.map((res, index) => (
 
                             <div key={index} className="w-full mx-auto mt-2 pl-6 bg-red-100 px-4 max-w-screen-md">
-                                <p className="mt-2">{res.main_area}</p>
+                                <div className="w-full flex flex-row">
+
+                                    <p className="mt-2">{res.main_area}</p>
+                                    <p>{res.price}</p>
+
+                                </div>
                                 <div>
                                     {res.locations.map((val, index) => (<p key={index}>{val}</p>))}
                                 </div>
