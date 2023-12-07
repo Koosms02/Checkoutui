@@ -212,7 +212,7 @@ export function Form() {
                     {
                         region.map((res, index) => (
 
-                            <div key={index} className="h-20 w-full mt-2 bg-red-100 pr-10">
+                            <div key={index} className="h-20 w-full mx-auto mt-2 bg-red-100 pr-10">
                                 <p>{res.main_area}</p>
                                 <p>{res.locations}</p>
                             </div>))
