@@ -212,11 +212,20 @@ export function Form() {
                     {
                         region.map((res, index) => (
 
-                            <div key={index} className="h-20 w-full mx-auto mt-2 bg-red-100 pr-10">
-                                <p>{res.main_area}</p>
-                                <p>{res.locations}</p>
+                            <div key={index} className="w-full mx-auto mt-2 pl-6 bg-red-100 px-4 max-w-screen-md">
+                                <p className="mt-2">{res.main_area}</p>
+                                <div>
+                                    {res.locations.map((val, index) => (<p key={index}>{val}</p>))}
+                                </div>
+                                {/* <p className="text-black whitespace-no-wrap ">{res.locations} </p> */}
                             </div>))
                     }
+
+                    <div className="h-10 " />
+                    <div type="submit" className="hover:bg-red-400 cursor-pointer flex h-12 w-44 justify-center items-center bg-white ">
+                        <button type="submit" className="h-12 w-44">submit</button>
+                        {/* <h3>Proceed </h3> */}
+                    </div>
                 </form>
 
             </div>}
