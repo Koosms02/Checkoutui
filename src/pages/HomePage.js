@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../components/nav";
 import Banner from "../components/banner";
-import Content from "../components/contents";
+import Content from "../components/contents/contents";
 
 
 function Home() {
