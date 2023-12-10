@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form"
 import { currentWindowSize } from "../Utils/utils"
 
 // import "../../css/pages/forms.css"
-import makePayment from "../api/api"
+// import makePayment from "../api/api"
+import makePayment from "../api/payment"
 // import delivery_locations from "../../Utils/delivery_locations"
 
 // import { useNavigate } from 'react-router-dom';
@@ -34,7 +35,7 @@ export function Form() {
     // eslint-disable-next-line no-unused-vars
     const [region, setRegion] = useState(delivery_locations.map(location => ({ ...location, selected: false })));
     // const [selected , setSelected ] = useState()
-    const [userInfo , setUserInfo] = useState()
+    const [userInfo, setUserInfo] = useState()
 
 
 
@@ -42,7 +43,7 @@ export function Form() {
     // eslint-disable-next-line no-unused-vars
     const handleRegionSelection = (index) => {
         // setSelected()
-        setUserInfo(prevData => ({...prevData , location: region[index]}))
+        setUserInfo(prevData => ({ ...prevData, location: region[index] }))
         setRegion((prevLocations) => {
             const updatedLocations = prevLocations.map((location, i) => ({
                 ...location,
@@ -52,7 +53,7 @@ export function Form() {
         });
     }
     const handleRegistration = async (data) => {
-        
+
         if (movePage.customer === true) {
             setUserInfo(data)
             setMovePage({
@@ -64,12 +65,12 @@ export function Form() {
 
             // setUserInfo(prevData => ({...prevData , location: selected
             // console.log(userInfo)
-            
+
             const link = await makePayment(userInfo);
 
             window.location.href = link;
-            
-        } 
+
+        }
         //should pay the data
         // Navigate("/payment")
 
@@ -173,7 +174,7 @@ export function Form() {
                             />
                             <span className="ml-2 text-white">
                                 {/* <p1 className="text-white"> */}
-                                    Pay with card
+                                Pay with card
                                 {/* </p1> */}
                             </span>
                         </label>
@@ -190,8 +191,8 @@ export function Form() {
                             {/* <div className="w-4" /> */}
                             <span className="ml-2 text-white">
                                 {/* <p1 className=""> */}
-                                    Pay cash
-                                
+                                Pay cash
+
                             </span>
                         </label>
                     </div>
@@ -209,11 +210,11 @@ export function Form() {
 
                 <h3 className='text-white'>From which regions are you from ?</h3>
                 <form className="w-full flex flex-col" onSubmit={handleSubmit(handleRegistration)}>
-                <div className="h-20"/>
+                    <div className="h-20" />
                     {
                         region.map((res, index) => (
 
-                            <div key={index} onClick={()=>handleRegionSelection(index)} className= "hover:bg-blue-300 w-full  mt-2 pl-6 bg-white px-4 max-w-screen-md rounded">
+                            <div key={index} onClick={() => handleRegionSelection(index)} className="hover:bg-blue-300 w-full  mt-2 pl-6 bg-white px-4 max-w-screen-md rounded">
                                 <div className="w-full flex flex-row justify-between items-center ">
 
                                     <p className="mt-2 font-bold ">{res.main_area}</p>
@@ -232,7 +233,7 @@ export function Form() {
                         <button type="submit" className="h-12 w-44">proceed to payment</button>
                         {/* <h3>Proceed </h3> */}
                     </div>
-                    <div className="h-10"/>
+                    <div className="h-10" />
                 </form>
 
             </div>}

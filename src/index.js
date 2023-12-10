@@ -8,6 +8,8 @@ import OrderPlaced from './components/Order_Place';
 import {
   RouterProvider, createBrowserRouter,
 } from 'react-router-dom';
+import CheckOut from './pages/CheckOut';
+import { CartProvider } from './State/useCart';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -15,6 +17,13 @@ const router = createBrowserRouter([
     path: "/",
     element:
       <App />
+
+  },
+
+  {
+    path: "/checkout",
+    element:
+      <CheckOut />
 
   },
   {
@@ -25,7 +34,9 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router}>
-  <App />
+  <CartProvider>
+    <App />
+  </CartProvider>
 </RouterProvider>);
 
 // root.render(

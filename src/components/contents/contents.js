@@ -3,11 +3,16 @@ import React, { useState } from "react";
 
 import readExcelFile from "../../api/database";
 import { currentWindowSize } from "../../Utils/utils";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import usecart from "../../State/useCart";
+import ediableProduct from "./ediables";
+import FlowerProduct from "./flower";
+import psychedelicsProduct from "./psychedelics";
 
 
 export default function contents() {
+
+    /* eslint-disable */
+    const { cart, addToCart, removeFromCart } = usecart();
     /* eslint-disable */
     const w = currentWindowSize().innerWidth;
 
@@ -16,8 +21,8 @@ export default function contents() {
         [
 
             // { "name": "All", "selected": true },
-            { "name": "Flowers", "selected": true },
-            { "name": "dope deals", "selected": false },
+            { "name": "dope deals", "selected": true },
+            { "name": "Flowers", "selected": false },
             { "name": "Psychedelics", "selected": false },
             { "name": "Ediables", "selected": false },
             { "name": "pre-rolled&vapes", "selected": false },
@@ -28,13 +33,53 @@ export default function contents() {
     /* eslint-disable */
     const [product, setProduct] = useState([null])
     const [Flowers, setFlowers] = useState([
-        { "cat": "Flowers", "name": "Guava", "prices": [{ "price P/5g": "R20", "selected": false }, { "price P/g": "R10 ", "selected": false }] },
-        { "cat": "Flowers", "name": "Pitbull", "prices": [{ "price P/5g": "R20", "selected": false }, { "price P/g": "R10 ", "selected": false }] },
-        { "cat": "Flowers", "name": "blue", "prices": [{ "price P/5g": "R20", "selected": false }, { "price P/g": "R10 ", "selected": false }] },
-        { "cat": "Flowers", "name": "Guava", "prices": [{ "price P/5g": "R20", "selected": false }, { "price P/g": "R10 ", "selected": false }] },
-        { "cat": "Flowers", "name": "Pitbull", "prices": [{ "price P/5g": "R20", "selected": false }, { "price P/g": "R10 ", "selected": false }] },
-        { "cat": "Flowers", "name": "blue", "prices": [{ "price P/5g": "R20", "selected": false }, { "price P/g": "R10 ", "selected": false }] },
+        {
+            "cat": "Flowers", "name": "Guava", "prices": [{ "price P/5g": "R20" }, { "price P/g": "R10" }]
+        },
+        { "cat": "Flowers", "name": "Pitbull", "prices": [{ "price P/5g": "R20" }, { "price P/g": "R10 " }] },
+        { "cat": "Flowers", "name": "blue", "prices": [{ "price P/5g": "R20" }, { "price P/g": "R10 " }] },
+        { "cat": "Flowers", "name": "Guava", "prices": [{ "price P/5g": "R20" }, { "price P/g": "R10 " }] },
+        { "cat": "Flowers", "name": "Pitbull", "prices": [{ "price P/5g": "R20" }, { "price P/g": "R10 " }] },
+        { "cat": "Flowers", "name": "blue", "prices": [{ "price P/5g": "R20" }, { "price P/g": "R10 " }] },
     ])
+
+    const [ediable, setEdiables] = useState([
+        {
+            "cat": "Ediables", "name": "Mike Bites", "price": "R600"
+        },
+        { "cat": "Ediables", "name": "DAW Gummies", "price": "R350" },
+        { "cat": "Ediables", "name": "Butterscotch Toffes", "price": "R350" },
+        { "cat": "Ediables", "name": "Cannapop Lollies", "price": "R350" },
+        { "cat": "Ediables", "name": "Fudge", "price": "R95" },
+        { "cat": "Ediables", "name": "Choclate chip Cookies", "price": "R165" },
+        { "cat": "Ediables", "name": "Choclate Brownies", "price": "R110" },
+        { "cat": "Ediables", "name": "Advert Calendar", "price": "R1199" },
+    ])
+
+    const [psychedelics, setPsychedelics] = useState([
+        {
+            "cat": "Ediables", "name": "Mike Bites", "price": "R600"
+        },
+        { "cat": "psychedelics", "name": "100g Microdosing capsules", "price": "R200" },
+        { "cat": "psychedelics", "name": "100g Microdosing capsules", "price": "R350" },
+        { "cat": "psychedelics", "name": "300mg capsules", "price": "R550" },
+        { "cat": "psychedelics", "name": "Microdose Drop(10 ml)", "price": "R200" },
+
+    ])
+
+
+    const [preRolled, setPrerolled] = useState([
+        {
+            "cat": "preRolled", "name": "Mike Bites", "price": "R600"
+        },
+        { "cat": "preRolled", "name": "100g Microdosing capsules", "price": "R200" },
+        { "cat": "preRolled", "name": "100g Microdosing capsules", "price": "R350" },
+        { "cat": "preRolled", "name": "300mg capsules", "price": "R550" },
+        { "cat": "preRolled", "name": "Microdose Drop(10 ml)", "price": "R200" },
+
+    ])
+
+
 
     const handleSelected = (selectedCat) => {
         setCategories(prev =>
@@ -70,25 +115,13 @@ export default function contents() {
         }
     }, [file])
 
+    React.useEffect(() => {
 
-    // React.useEffect(() => {
+        if (cart.length != 0) {
+            console.log(cart)
+        }
+    }, [cart])
 
-    //     if (product) {
-    //         // console.log(typeof (product))
-    //         console.log(Object.entries(product))
-    //         let f = []
-    //         for (let j = 0; j < product.length; j++) {
-    //             console.log(product[j])
-    //             f.push(product[j])
-    //         }
-
-    //         setFlowers(f)
-
-    //     }
-
-    // }, [product])
-
-    //perform operations on it 
 
 
 
@@ -114,128 +147,41 @@ export default function contents() {
 
             </div>
 
-            <div className="h-20" />
+            <div className="h-8" />
 
             <div className="flex flex-col w-full h-full bg-white">
 
+                {/* this is for flowers */}
 
-                {categories[0].selected === true &&
+                {categories[1].selected === true &&
 
                     <div className=" flex flex-col w-full h-full overflow-y-auto items-start justify-start  bg-black">
                         {Flowers.length != 0 &&
-                            Flowers.map((pro, index) => (<div key={index} className={`flex flex-row h-[300px] overflow-x-auto-hidden mt-4  p-2 w-full flex-row  rounded`}>
-                                {/* its an image */}
-                                <div className="flex h-full w-1/2 bg-red-100">
-                                    <img className="h-full w-full" src={"https://images.unsplash.com/photo-1656841331595-aa7d15483eff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VlZCUyMHN0cmFpbnxlbnwwfHwwfHx8MA%3D%3D"} />
-                                </div>
-
-                                {/* information of the product */}
-                                <div className="flex flex-col h-full w-1/2 bg-white p-2 ">
-                                    {/* name of the product */}
-                                    <p className="font-bold ">{pro.name}</p>
-
-                                    {/*Quantity and price  */}
-                                    <p className="font-bold text-[12px]">Quantity and Prices</p>
-                                    <div className="flex flex-col h-full overflow-y-auto mt-2">
-                                        {
-                                            pro.prices.map((price, index) => (
-                                                <div key={index} className="flex flex-col w-full  p-2">
-                                                    {price["price P/5g"] !== undefined && (
-                                                        <div className="w-full flex flex-col justify-between items-center ">
-                                                            <div className="flex flex-row w-full justify-between pr-2">
-                                                                <p>{"price P/5g: "}</p>
-                                                                <p className="font-bold ">{price["price P/5g"]}</p>
-                                                            </div>
-                                                            <div className="h-2" />
-                                                            <div onClick={() => { }} className=" cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md bg-white ">
-                                                                <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
-                                                                <div className="w-2" />
-                                                                <p className="text-white font-bold text-[10px]">add to cart</p>
-                                                            </div>
-                                                        </div>
-
-                                                    )}
-
-                                                    {price["price P/g"] !== undefined && (
-                                                        <div className="w-full flex flex-col justify-between items-center ">
-                                                            <div className="flex flex-row w-full justify-between pr-2">
-                                                                <p>{"price P/g: "}</p>
-                                                                <p className="font-bold ">{price["price P/5g"]}</p>
-                                                            </div>
-                                                            <div className="h-2" />
-                                                            <div onClick={() => { }} className=" cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md bg-white ">
-                                                                <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
-                                                                <div className="w-2" />
-                                                                <p className="text-white font-bold text-[10px]">add to cart</p>
-                                                            </div>
-                                                        </div>
-
-                                                    )}
-
-                                                    {price["price P/10g"] !== undefined && (
-                                                        <div className="w-full flex flex-col justify-between items-center ">
-                                                            <div className="flex flex-row w-full justify-between pr-2">
-                                                                <p>{"price P/10g: "}</p>
-                                                                <p className="font-bold ">{price["price P/5g"]}</p>
-                                                            </div>
-                                                            <div className="h-2" />
-                                                            <div onClick={() => { }} className=" cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md bg-white ">
-                                                                <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
-                                                                <div className="w-2" />
-                                                                <p className="text-white font-bold text-[10px]">add to cart</p>
-                                                            </div>
-                                                        </div>
-
-                                                    )}
-
-                                                    {price["price P/g of 50g"] !== undefined && (
-                                                        <div className="w-full flex flex-col justify-between items-center ">
-                                                            <div className="flex flex-row w-full justify-between pr-2">
-                                                                <p>{"price P/5g: "}</p>
-                                                                <p className="font-bold ">{price["price P/5g"]}</p>
-                                                            </div>
-                                                            <div className="h-2" />
-                                                            <div onClick={() => { }} className=" cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md bg-white ">
-                                                                <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
-                                                                <div className="w-2" />
-                                                                <p className="text-white font-bold text-[10px]">add to cart</p>
-                                                            </div>
-                                                        </div>
-
-                                                    )}
-
-                                                    {price["price P/g of 100g"] !== undefined && (
-                                                        <div className="w-full flex flex-col justify-between items-center ">
-                                                            <div className="flex flex-row w-full justify-between pr-2">
-                                                                <p>{"price P/5g: "}</p>
-                                                                <p className="font-bold ">{price["price P/5g"]}</p>
-                                                            </div>
-                                                            <div className="h-2" />
-                                                            <div onClick={() => { }} className=" cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md bg-white ">
-                                                                <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
-                                                                <div className="w-2" />
-                                                                <p className="text-white font-bold text-[10px]">add to cart</p>
-                                                            </div>
-                                                        </div>
-
-                                                    )}
-
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-
-                                </div>
-
-
-
-
-                            </div>))
+                            Flowers.map((pro, index) => (
+                                FlowerProduct(pro.name, pro.prices, addToCart)))
                         }
                     </div>}
 
 
+                {categories[3].selected === true &&
 
+                    <div className=" flex flex-col w-full h-full overflow-y-auto items-start justify-start  bg-black">
+                        {ediable.length != 0 &&
+                            ediable.map((productInfo, index) => (
+                                ediableProduct(productInfo, addToCart)))
+                        }
+                    </div>}
+
+                {categories[2].selected === true &&
+
+                    <div className=" flex flex-col w-full h-screen overflow-y-auto items-start justify-start  bg-black">
+                        {psychedelics.length != 0 &&
+                            psychedelics.map((productInfo, index) => (
+                                psychedelicsProduct(productInfo, addToCart)))
+                        }
+                    </div>}
+
+                {/* psychedelics */}
             </div>
         </div>
     )
