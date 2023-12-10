@@ -4,7 +4,6 @@ import './index.css';
 
 // import CheckOut from './js/CheckOut'
 import App from './App';
-import Home from './pages/HomePage';
 import OrderPlaced from './components/Order_Place';
 import {
   RouterProvider, createBrowserRouter,
@@ -15,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element:
-      <Home />
+      <App />
 
   },
   {

@@ -1,9 +1,51 @@
+import React, { useReducer } from "react";
 import CartContext from "./cartContext";
+import PropTypes from "prop-types";
 import { useContext } from "react";
 
-export const cartProvide = ({ children }) => {
+
+//cart reducer to manage the state 
+
+const cartReducer = (state, action) => {
+
+    switch (action.type) {
+        case "ADD_TO_CART":
+            return { ...state, cartItems: [...state.cartItems, action.payload] }
+
+        case "REMOVE_FROM_CART":
+            return {
+                ...state,
+                cartItems: state.cartItems.filter((item) => item !== action.payload)
+            };
+
+        default:
+            return state;
+
+    }
+
+}
+
+
+export const CartProvider = ({ children }) => {
+
+    //initial state using useReducer
+
+    const [state, dispatch] = useReducer(cartReducer, { cartItems: [] })
+
+    //action to dispatch
+
+    const addToCart = (item) => {
+        dispatch({ type: "ADD_TO_CART", payload: item });
+    }
+
+    const removeFromCart = (item) => {
+        dispatch({ type: "REMOVE_FROM_CART", payload: item })
+    }
+
     return (
-        <CartContext.Provider value={null}>
+        <CartContext.Provider value={{
+            cart: state.cartItems, addToCart, removeFromCart
+        }}>
             {children}
         </CartContext.Provider>
 
@@ -12,6 +54,19 @@ export const cartProvide = ({ children }) => {
 };
 
 
+CartProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
+
 export default function usecart() {
-    return useContext(CartContext)
+    const contextValue = useContext(CartContext);
+
+    if (!contextValue) {
+        throw new Error("useCart must be within a CartProvider");
+    }
+
+
+    return contextValue;
+
 }
+
