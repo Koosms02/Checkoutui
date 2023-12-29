@@ -1,0 +1,5 @@
+
+how to import json data .
+adding the search `
+
+- making the state global

@@ -5,12 +5,9 @@ import Content from "../components/contents/contents";
 
 
 function Home() {
-
-
-
     return (
 
-        <div className="flex flex-col w-full h-full scrollbar-hidden">
+        <div className="flex flex-col w-full h-full scrollbar-hidden bg-black ">
 
             {/* banner images */}
             {/* <Banner /> */}

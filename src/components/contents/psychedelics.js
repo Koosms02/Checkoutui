@@ -8,7 +8,7 @@ const psychedelicsProduct = (productInfo, addToCart) => {
 
     // addToCart()
     return (
-        <div className=" bg-white  flex flex-row h-[100px] overflow-x-auto-hidden mt-4 p-2 w-1/2 flex-row rounded">
+        <div className=" bg-white  flex flex-row h-[120px] overflow-x-auto-hidden   w-full flex-row rounded">
 
 
             {/* Information */}
@@ -22,7 +22,7 @@ const psychedelicsProduct = (productInfo, addToCart) => {
 
 
                 </div>
-                <div onClick={() => addToCart()}
+                <div onClick={() => addToCart({ "name": productInfo.name, "categories": productInfo.type })}
                     className=" hover:bg-blue-300 cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md ">
                     <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
                     <div className="w-2" />

@@ -6,6 +6,8 @@ import { useContext } from "react";
 
 //cart reducer to manage the state 
 
+let itemIdCounter = 0;
+
 const cartReducer = (state, action) => {
 
     switch (action.type) {
@@ -15,7 +17,7 @@ const cartReducer = (state, action) => {
         case "REMOVE_FROM_CART":
             return {
                 ...state,
-                cartItems: state.cartItems.filter((item) => item !== action.payload)
+                cartItems: state.cartItems.filter((item) => item.id !== action.payload.id)
             };
 
         default:
@@ -35,7 +37,9 @@ export const CartProvider = ({ children }) => {
     //action to dispatch
 
     const addToCart = (item) => {
-        dispatch({ type: "ADD_TO_CART", payload: item });
+        const uniqueId = itemIdCounter++;
+        const itemWithId = { ...item, id: uniqueId };
+        dispatch({ type: "ADD_TO_CART", payload: itemWithId });
     }
 
     const removeFromCart = (item) => {

@@ -1,0 +1,349 @@
+{
+    "data": [
+        {
+            "Category": "Outdoor",
+            "Price p/g": "R20",
+            "Price P/20g ": "R350",
+            "Price P/g on 100g": "R11",
+            "Price P/g on 200g": "R9",
+            "type": "Flowers",
+            "name": "Guava S*"
+        },
+        {
+            "Category": "Outdoor",
+            "Price p/g": "R20",
+            "Price P/20g ": "R350",
+            "Price P/g on 100g": "R11",
+            "Price P/g on 200g": "R9",
+            "type": "Flowers",
+            "name": "Bubba Kush I*"
+        },
+        {
+            "Category": "Greenhouse",
+            "Price p/g": "R30",
+            "Price P/20g ": "R550",
+            "Price P/g on 100g": "R16",
+            "Price P/g on 200g": "R14",
+            "type": "Flowers",
+            "name": "Maui Wowie S*"
+        },
+        {
+            "Category": "Greenhouse",
+            "Price p/g": "R30",
+            "Price P/20g ": "R550",
+            "Price P/g on 100g": "R16",
+            "Price P/g on 200g": "R14",
+            "type": "Flowers",
+            "name": "Blueberry I*"
+        },
+        {
+            "Category": "Greenhouse",
+            "Price p/g": "R30",
+            "Price P/20g ": "R550",
+            "Price P/g on 100g": "R16",
+            "Price P/g on 200g": "R14",
+            "type": "Flowers",
+            "name": "Lemon Haze S*"
+        },
+        {
+            "Category": "Greenhouse",
+            "Price p/g": "R30",
+            "Price P/20g ": "R550",
+            "Price P/g on 100g": "R16",
+            "Price P/g on 200g": "R14",
+            "type": "Flowers",
+            "name": "Forbidden Fruit I*"
+        },
+        {
+            "Category": "Premium Exotic Greenhouse",
+            "Price p/g": "R70",
+            "Price P/10g": "R650",
+            "Price P/g on 100g": "R25",
+            "Price P/g on 200g": "R22",
+            "type": "Flowers",
+            "name": "Gelato H*"
+        },
+        {
+            "Category": "Premium Exotic Greenhouse",
+            "Price p/g": "R70",
+            "Price P/10g": "R650",
+            "Price P/g on 100g": "R25",
+            "Price P/g on 200g": "R22",
+            "type": "Flowers",
+            "name": "Wedding Cake I*"
+        },
+        {
+            "Category": "Premium Exotic Greenhouse",
+            "Price p/g": "R70",
+            "Price P/10g": "R650",
+            "Price P/g on 100g": "R25",
+            "Price P/g on 200g": "R22",
+            "type": "Flowers",
+            "name": "Strawberry cough S*"
+        },
+        {
+            "Category": "A+ Indoor",
+            "Price p/g": "R85",
+            "Price P/10g": "R800",
+            "Price P/g on 50g": "R40",
+            "type": "Flowers",
+            "name": "Rainbow Cannoli H*"
+        },
+        {
+            "Category": "A+ Indoor",
+            "Price p/g": "R85",
+            "Price P/10g": "R800",
+            "Price P/g on 50g": "R45",
+            "type": "Flowers",
+            "name": "Biker Kush I*"
+        },
+        {
+            "Category": "A+ Indoor",
+            "Price p/g": "R95",
+            "Price P/10g": "R900",
+            "Price P/g on 50g": "R50",
+            "type": "Flowers",
+            "name": "Ice Cream H*"
+        },
+        {
+            "Category": "Primo Indoor",
+            "Price p/g": "R120",
+            "Price P/5g": "R550",
+            "Price P/g on 50g": "R55",
+            "Price P/g on 100g": "R52",
+            "type": "Flowers",
+            "name": "Lemon Tree I*"
+        },
+        {
+            "Category": "Primo Indoor",
+            "Price p/g": "R135",
+            "Price P/5g": "R625",
+            "Price P/g on 100g": "R58",
+            "type": "Flowers",
+            "name": "Sour OG Cheese H*"
+        },
+        {
+            "Category": "Primo Indoor",
+            "Price p/g": "R135",
+            "Price P/5g": "R625",
+            "Price P/g on 50g": "R60",
+            "type": "Flowers",
+            "name": "Gorilla Glue I*"
+        },
+        {
+            "Category": "Primo Indoor",
+            "Price p/g": "R135",
+            "Price P/5g": "R675",
+            "type": "Flowers",
+            "name": "Crescendo S*"
+        },
+        {
+            "Category": "Primo Indoor",
+            "Price p/g": "R145",
+            "Price P/5g": "R675",
+            "Price P/g on 50g": "R65",
+            "Price P/g on 100g": "R62",
+            "type": "Flowers",
+            "name": "Blunicorn I*"
+        },
+        {
+            "Category": "Hydro",
+            "Price p/g": "R145",
+            "Price P/5g": "R750",
+            "Price P/g on 50g": "R85",
+            "Price P/g on 100g": "R78",
+            "type": "Flowers",
+            "name": "Mendo Purps I*"
+        },
+        {
+            "Category": "Hydro",
+            "Price p/g": "R160",
+            "Price P/5g": "R750",
+            "Price P/g on 50g": "R85",
+            "Price P/g on 100g": "R78",
+            "type": "Flowers",
+            "name": "Unicorn Poop H*"
+        },
+        {
+            "Category": "Hydro",
+            "Price p/g": "R165",
+            "Price P/5g": "R775",
+            "type": "Flowers",
+            "name": "Peanut Butter Sherbet H*"
+        },
+        {
+            "Category": "Hydro",
+            "Price p/g": "R175",
+            "Price P/5g": "R825",
+            "type": "Flowers",
+            "name": "Pitbull S*"
+        },
+        {
+            "Category": "Hydro",
+            "Price p/g": "R175",
+            "Price P/5g": "R825",
+            "Price P/g on 50g": "R95",
+            "Price P/g on 100g": "R89",
+            "type": "Flowers",
+            "name": "Blue Cheese I*"
+        },
+        {
+            "Category": "indoor",
+            "Price": "R35",
+            "Price per 10": "R300",
+            "type": "pre-rolled&vapes",
+            "name": "Stix"
+        },
+        {
+            "Category": "hydro",
+            "Price": "R55",
+            "Price per 10": "R500",
+            "type": "pre-rolled&vapes",
+            "name": "Stix"
+        },
+        {
+            "Category": "greenhouse",
+            "Price": "R30",
+            "Price per 10": "R250",
+            "type": "pre-rolled&vapes",
+            "name": "Glazed Stix"
+        },
+        {
+            "Category": "indoor",
+            "Price": "R40",
+            "Price per 10": "R350",
+            "type": "pre-rolled&vapes",
+            "name": "Glazed Stix"
+        },
+        {
+            "Category": "hydro",
+            "Price": "R60",
+            "Price per 10": "R450",
+            "type": "pre-rolled&vapes",
+            "name": "Glazed Stix"
+        },
+        {
+            "Category": "greenhouse",
+            "Price": "R35",
+            "Price per 10": "R300",
+            "type": "pre-rolled&vapes",
+            "name": "OG's"
+        },
+        {
+            "Category": "indoor",
+            "Price": "R65",
+            "Price per 10": "R600",
+            "type": "pre-rolled&vapes",
+            "name": "OG's"
+        },
+        {
+            "Category": "hydro",
+            "Price": "R90",
+            "Price per 10": "R850",
+            "type": "pre-rolled&vapes",
+            "name": "OG's"
+        },
+        {
+            "Category": "greenhouse",
+            "Price": "R45",
+            "Price per 10": "R400",
+            "type": "pre-rolled&vapes",
+            "name": "Glazed OG's"
+        },
+        {
+            "Category": "indoor",
+            "Price": "R75",
+            "Price per 10": "R700",
+            "type": "pre-rolled&vapes",
+            "name": "Glazed OG's"
+        },
+        {
+            "Category": "hydro",
+            "Price": "R100",
+            "Price per 10": "R950",
+            "type": "pre-rolled&vapes",
+            "name": "Glazed OG's"
+        },
+        {
+            "Category": "greenhouse",
+            "Price": "R45",
+            "Price per 5 ": "R200",
+            "type": "pre-rolled&vapes",
+            "name": "Giant Smurfs"
+        },
+        {
+            "Category": "indoor",
+            "Price": "R75",
+            "Price per 5 ": "R300",
+            "type": "pre-rolled&vapes",
+            "name": "Giant Smurfs"
+        },
+        {
+            "Category": "hydro",
+            "Price": "R100",
+            "Price per 5 ": "R450",
+            "type": "pre-rolled&vapes",
+            "name": "Giant Smurfs"
+        },
+        {
+            "price": "R600",
+            "type": "Ediables",
+            "name": "Mike Bites"
+        },
+        {
+            "price": "R350",
+            "type": "Ediables",
+            "name": "DAW Gummies"
+        },
+        {
+            "price": "R350",
+            "type": "Ediables",
+            "name": "Butterscotch Toffees"
+        },
+        {
+            "price": "R95",
+            "type": "Ediables",
+            "name": "Cannapop Lollies"
+        },
+        {
+            "price": "R165",
+            "type": "Ediables",
+            "name": "Fudge"
+        },
+        {
+            "price": "R65",
+            "type": "Ediables",
+            "name": "Choclate Chip Cookies"
+        },
+        {
+            "price": "R110",
+            "type": "Ediables",
+            "name": "Choclate Brownies"
+        },
+        {
+            "price": "R1199",
+            "type": "Ediables",
+            "name": "Advent Calendar"
+        },
+        {
+            "type": "Psychedelics",
+            "name": "Albino Penis Envy"
+        },
+        {
+            "type": "Psychedelics",
+            "name": "Natal Super Strength"
+        },
+        {
+            "type": "Psychedelics",
+            "name": "3g NSS Honey Pot"
+        },
+        {
+            "type": "Psychedelics",
+            "name": "3g LeucisticA+Dark Choclate slab"
+        },
+        {
+            "type": "Psychedelics",
+            "name": "10ml microdose drops"
+        }
+    ]
+}

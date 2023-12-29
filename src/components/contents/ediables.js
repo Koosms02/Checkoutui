@@ -5,14 +5,15 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 const ediableProduct = (productInfo, addToCart) => {
+    const url = productInfo.imageUrl != undefined ? productInfo.imageUrl : require("../../assets/daw_icon/daw_icon.png")
 
     // addToCart()
     return (
-        <div onClick={addToCart}
-            className=" bg-white flex-col  h-[300px] overflow-x-auto-hidden  mt-2 p-2 w-1/2  rounded">
+        <div
+            className=" bg-white flex-col  h-[300px] overflow-x-auto-hidden  mt-2 p-2 w-full rounded">
             {/* Image */}
             <div className="flex h-4/5 w-full bg-red-100">
-                <img className="h-full w-full" src="https://images.unsplash.com/photo-1656841331595-aa7d15483eff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VlZCUyMHN0cmFpbnxlbnwwfHwwfHx8MA%3D%3D" alt="product" />
+                <img className="h-full w-full" src={url} alt="product" />
             </div>
             <div className='h-1/5 w-full'>
                 <div className='w-full flex flex-row justify-between'>
@@ -20,7 +21,7 @@ const ediableProduct = (productInfo, addToCart) => {
                     <p>{productInfo.price}</p>
                 </div>
                 <div className='h-2' />
-                <div onClick={() => { addToCart({ "name": productInfo.name, "price": productInfo.price }) }} className='hover:bg-blue-300 cursor-pointer w-full h-[26px] flex flex-row justify-center items-center bg-blue-600 rounded'>
+                <div onClick={() => addToCart({ "name": productInfo.name, "price": productInfo.price, "categories": productInfo.type })} className='hover:bg-blue-300 cursor-pointer w-full h-[26px] flex flex-row justify-center items-center bg-blue-600 rounded'>
                     <FontAwesomeIcon icon={faShoppingBasket} />
                     <div className='w-2' />
                     <p>add to cart</p>

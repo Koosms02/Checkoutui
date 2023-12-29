@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import CheckOut from './pages/CheckOut';
 import { CartProvider } from './State/useCart';
+import { DataProvider } from './State/useData';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -33,19 +34,15 @@ const router = createBrowserRouter([
 ]);
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router}>
-  <CartProvider>
-    <App />
-  </CartProvider>
-</RouterProvider>);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <CartProvider>
+      <DataProvider>
+        <RouterProvider router={router} />
+      </DataProvider>
+    </CartProvider>
+  </React.StrictMode>
 
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+);
+
