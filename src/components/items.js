@@ -25,7 +25,7 @@ export function Items(props) {
 
     React.useEffect(() => {
         let total = 0;
-
+        console.log(cart)
         // Iterate through each item in the cart and sum their prices
         cart.forEach((item) => {
             // Extract the numerical value from the string and convert it to a number

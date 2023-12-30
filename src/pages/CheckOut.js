@@ -4,7 +4,11 @@ import { Form } from '../components/form';
 import { Items } from '../components/items';
 import ShowProduct from "../components/showItems"
 
+
 function CheckOut() {
+
+
+
   const [showItems, setShowItems] = useState(false)
   const [transportCost, setTransportCost] = useState(null)
   const updateCost = (newCost) => {
@@ -14,6 +18,8 @@ function CheckOut() {
   const setProduct = (value) => {
     setShowItems(value)
   }
+
+
 
   return (
     <div className='flex h-screen w-screen bg-black grid-cols-3'>

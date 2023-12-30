@@ -5,6 +5,7 @@ import { currentWindowSize } from "../Utils/utils"
 // import makePayment from "../api/api"
 import makePayment from "../api/payment"
 import PropTypes from 'prop-types';
+import usecart from "../State/useCart";
 // import delivery_locations from "../../Utils/delivery_locations"
 
 // import { useNavigate } from 'react-router-dom';
@@ -21,9 +22,10 @@ const delivery_locations = [
 ]
 
 export function Form(props) {
+
     const w = currentWindowSize().innerWidth
     // const Navigate = useNavigate()
-
+    const { cart } = usecart()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [movePage, setMovePage] = useState({
         "customer": true,
@@ -32,6 +34,7 @@ export function Form(props) {
     })
 
 
+    const [subPrice, setSubPrice] = useState(0.0)
     // eslint-disable-next-line no-unused-vars
     const [region, setRegion] = useState(delivery_locations.map(location => ({ ...location, selected: false })));
     // const [selected , setSelected ] = useState()
@@ -43,7 +46,7 @@ export function Form(props) {
     // eslint-disable-next-line no-unused-vars
     const handleRegionSelection = (price, index) => {
         // setSelected()
-        console.log(price)
+        // console.log(price)
         props.setCost(parseFloat(price))
         setUserInfo(prevData => ({ ...prevData, location: region[index] }))
         setRegion((prevLocations) => {
@@ -54,6 +57,22 @@ export function Form(props) {
             return updatedLocations;
         });
     }
+
+    // handling the prices 
+    React.useEffect(() => {
+        let total = 0;
+
+        // Iterate through each item in the cart and sum their prices
+        cart.forEach((item) => {
+            // Extract the numerical value from the string and convert it to a number
+            const priceValue = parseFloat(item.price.replace("R", "")); // Remove "R" and parse as float
+            total += priceValue
+        })
+        // Update the state with the total price
+        setSubPrice(total);
+    }, [cart])
+
+
     const handleRegistration = async (data) => {
 
         if (movePage.customer === true) {
@@ -65,12 +84,17 @@ export function Form(props) {
             })
         } else if (movePage.shipping === true) {
 
-            // setUserInfo(prevData => ({...prevData , location: selected
-            // console.log(userInfo)
+            if (paymentChoice.cash == true) {
+                //navigate and show a message 
+            } else {
 
-            const link = await makePayment(userInfo);
+                const link = await makePayment(userInfo, subPrice);
 
-            window.location.href = link;
+                // console.log(link)
+
+                window.location.href = link;
+            }
+
 
         }
         //should pay the data
@@ -233,7 +257,8 @@ export function Form(props) {
 
 Form.propTypes = {
     setCost: PropTypes.func.isRequired, // setCost should be a function and is required
-    setShowItems: PropTypes.func.isRequired
+    setShowItems: PropTypes.func.isRequired,
+    // cost: PropTypes.double.isRequired
 };
 
 

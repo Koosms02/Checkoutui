@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 // imageUrlList
-import { currentWindowSize } from "../../Utils/utils";
+import { currentWindowSize, imageUrlList } from "../../Utils/utils";
 import usecart from "../../State/useCart";
 import ediableProduct from "./ediables";
 import FlowerProduct from "./flower";
 import psychedelicsProduct from "./psychedelics";
 import preRolledProduct from "./pre_rolled"
-import productJson from "../../mockdata.json";
+// import productJson from "../../mockdata.json";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "../../State/useData";
@@ -80,28 +80,25 @@ export default function contents() {
 
         const products = []
         const Data = Object.values(dataList)
-        if (dataList.length == 0) {
-            // Data[0].map((item) => {
-            //     item["imageUrl"] = "";
-            // })
+        if (dataList.length != 0) {
 
-            // Data[0].forEach((items, index) => {
-            //     for (let i = 0; i < imageUrlList.length; i++) {
-            //         if (items.name.toLocaleLowerCase().includes(imageUrlList[i].name.toLowerCase())) {
-            //             // Data[index].imageUrl = imageUrlList[i].url
-            //         }
-            //     }
-            // })
+            Data.forEach((items, index) => {
+                for (let i = 0; i < imageUrlList.length; i++) {
+                    if (items.name.toLocaleLowerCase().includes(imageUrlList[i].name.toLowerCase())) {
+                        Data[index].imageUrl = imageUrlList[i].url
+                    }
+                }
+            })
 
             //use Data[0]
-            console.log(productJson.data)
+            // console.log(productJson.data)
 
-            const Flowers = productJson.data.filter(item => item.type.toLowerCase() == "flowers")
-            const Dope_deals = productJson.data.filter(item => item.type.toLowerCase() == "dope_deals")
-            const Ediables = productJson.data.filter(item => item.type.toLowerCase() == "ediables")
-            const Pre_rolled = productJson.data.filter(item => item.type.toLowerCase() == "pre-rolled&vapes")
-            const Medicinal = productJson.data.filter(item => item.type.toLowerCase() == "medicinal")
-            const Psychedelics = productJson.data.filter(item => item.type.toLowerCase() == "psychedelics")
+            const Flowers = Data.filter(item => item.type.toLowerCase() == "flowers")
+            const Dope_deals = Data.filter(item => item.type.toLowerCase() == "dope_deals")
+            const Ediables = Data.filter(item => item.type.toLowerCase() == "ediables")
+            const Pre_rolled = Data.filter(item => item.type.toLowerCase() == "pre-rolled&vapes")
+            const Medicinal = Data.filter(item => item.type.toLowerCase() == "medicinal")
+            const Psychedelics = Data.filter(item => item.type.toLowerCase() == "psychedelics")
 
             setFlowers(Flowers)
             setPrerolled(Pre_rolled)
