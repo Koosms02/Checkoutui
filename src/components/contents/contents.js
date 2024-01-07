@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 // imageUrlList
-import { currentWindowSize, imageUrlList } from "../../Utils/utils";
+import { currentWindowSize } from "../../Utils/utils";
 import usecart from "../../State/useCart";
 import ediableProduct from "./ediables";
 import FlowerProduct from "./flower";
 import psychedelicsProduct from "./psychedelics";
 import preRolledProduct from "./pre_rolled"
-// import productJson from "../../mockdata.json";
+import productJson from "../../mockdata.json";
+import MedicinalProduct from "./medicinal"
+import Deals from "./dopeDeals"
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "../../State/useData";
@@ -48,17 +50,7 @@ export default function contents() {
         );
     };
 
-    // storing a spreedsheet file
 
-    const [file, setFile] = useState(null);
-
-
-    //handling the upload of the file 
-
-    const handleFileUpload = (e) => {
-        setFile(e.target.files[0])
-
-    }
 
     /* eslint-disable */
     const [flowers, setFlowers] = useState([])
@@ -71,6 +63,7 @@ export default function contents() {
 
     /**eslint-disable */
     const [medicinal, setMedicinal] = useState([])
+    const [DopeDeals, setDopeDeals] = useState([])
 
     const [searchTerm, setSearchTerm] = useState(null)
 
@@ -79,41 +72,44 @@ export default function contents() {
     React.useEffect(() => {
 
         const products = []
-        const Data = Object.values(dataList)
-        if (dataList.length != 0) {
+        // const Data = Object.values(dataList)
+        const Products = productJson.data
 
-            Data.forEach((items, index) => {
-                for (let i = 0; i < imageUrlList.length; i++) {
-                    if (items.name.toLocaleLowerCase().includes(imageUrlList[i].name.toLowerCase())) {
-                        Data[index].imageUrl = imageUrlList[i].url
-                    }
-                }
-            })
+        if (dataList.length == 0) {
+
+            // Data.forEach((items, index) => {
+            //     for (let i = 0; i < imageUrlList.length; i++) {
+            //         if (items.name.toLowerCase().includes(imageUrlList[i].name.toLowerCase())) {
+            //             Data[index].imageUrl = imageUrlList[i].url
+            //         }
+            //     }
+            // })
 
             //use Data[0]
             // console.log(productJson.data)
 
-            const Flowers = Data.filter(item => item.type.toLowerCase() == "flowers")
-            const Dope_deals = Data.filter(item => item.type.toLowerCase() == "dope_deals")
-            const Ediables = Data.filter(item => item.type.toLowerCase() == "ediables")
-            const Pre_rolled = Data.filter(item => item.type.toLowerCase() == "pre-rolled&vapes")
-            const Medicinal = Data.filter(item => item.type.toLowerCase() == "medicinal")
-            const Psychedelics = Data.filter(item => item.type.toLowerCase() == "psychedelics")
+            const Flowers = Products.filter(item => item.type.toLowerCase() == "flowers")
+            const Dope_deals = Products.filter(item => item.type.toLowerCase() == "deals")
+            const Ediables = Products.filter(item => item.type.toLowerCase() == "ediables")
+            const Pre_rolled = Products.filter(item => item.type.toLowerCase() == "pre-rolled&vapes")
+            const Medicinal = Products.filter(item => item.type.toLowerCase() == "medicinal")
+            const Psychedelics = Products.filter(item => item.type.toLowerCase() == "psychedelics")
 
             setFlowers(Flowers)
             setPrerolled(Pre_rolled)
             setMedicinal(Medicinal)
             setPsychedelics(Psychedelics)
             setEdiables(Ediables)
+            setDopeDeals(Dope_deals)
         }
     }, [dataList])
 
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
-        if (cart.length != 0) {
-            console.log(cart)
-        }
-    }, [cart])
+    //     if (cart.length != 0) {
+    //         console.log(cart)
+    //     }
+    // }, [cart])
 
     // function for handling the filtering of data 
     const handleSearchParams = (event) => {
@@ -144,8 +140,6 @@ export default function contents() {
 
                 {/*  as the use type it should filter out things that are not relevant */}
             </div>
-            <p className="text-white">{searchTerm}</p>
-
 
             <div className="flex-shink-0 flex h-28 items-center w-full flex-row overflow-x-auto ">
                 {
@@ -161,11 +155,21 @@ export default function contents() {
 
             </div>
 
-
             {/* the items here should be scrollable */}
             <div className="w-full h-full flex flex-col overflow-y-auto">
                 <div className="h-8" />
                 <div className="flex flex-col w-full bg-white">
+                    {categories[0].selected === true &&
+                        <div className="  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-2 w-full  h-screen overflow-y-auto  bg-black">
+                            {DopeDeals.length != 0 &&
+                                DopeDeals.filter((prod) => {
+                                    if (searchTerm == null) return prod
+                                    else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                        return prod
+                                }).map((productInfo, index) => (
+                                    Deals(productInfo, addToCart)))
+                            }
+                        </div>}
 
                     {/* this is for flowers */}
 
@@ -181,7 +185,23 @@ export default function contents() {
                             }
                         </div>}
 
-                    {/*  */}
+
+                    {/* psychedelics */}
+
+                    {categories[2].selected === true &&
+
+                        <div className="  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-1 w-full  h-screen overflow-y-auto items-start justify-start  bg-black">
+                            {psychedelics.length != 0 &&
+                                psychedelics.filter((prod) => {
+                                    if (searchTerm == null) return prod
+                                    else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                        return prod
+                                }).map((productInfo, index) => (
+                                    psychedelicsProduct(productInfo, addToCart)))
+                            }
+                        </div>}
+
+                    {/* ediables */}
                     {categories[3].selected === true &&
 
                         <div className=" grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-3 w-full h-full overflow-y-auto items-start justify-start  bg-black">
@@ -192,19 +212,6 @@ export default function contents() {
                                         return prod
                                 }).map((productInfo, index) => (
                                     ediableProduct(productInfo, addToCart)))
-                            }
-                        </div>}
-
-                    {categories[2].selected === true &&
-
-                        <div className="  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-2 w-full  h-screen overflow-y-auto items-start justify-start  bg-black">
-                            {psychedelics.length != 0 &&
-                                psychedelics.filter((prod) => {
-                                    if (searchTerm == null) return prod
-                                    else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                        return prod
-                                }).map((productInfo, index) => (
-                                    psychedelicsProduct(productInfo, addToCart)))
                             }
                         </div>}
 
@@ -221,8 +228,24 @@ export default function contents() {
                                     preRolledProduct(pro, addToCart)))
                             }
                         </div>}
+                    {/* medicinal */}
 
-                    {/* psychedelics */}
+                    {categories[5].selected === true &&
+
+                        <div className="  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-2 w-full  h-screen overflow-y-auto items-start justify-start  bg-black">
+                            {medicinal.length != 0 &&
+                                medicinal.filter((prod) => {
+                                    if (searchTerm == null) return prod
+                                    else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                        return prod
+                                }).map((productInfo, index) => (
+                                    MedicinalProduct(productInfo, addToCart)))
+                            }
+                        </div>}
+
+                    {/* dope deals */}
+
+
                 </div>
 
             </div>

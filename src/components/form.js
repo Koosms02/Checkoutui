@@ -74,6 +74,7 @@ export function Form(props) {
 
 
     const handleRegistration = async (data) => {
+        console.log(data)
 
         if (movePage.customer === true) {
             setUserInfo(data)

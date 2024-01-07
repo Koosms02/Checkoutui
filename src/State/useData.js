@@ -16,7 +16,7 @@ const DataProvider = ({ children }) => {
 
     // Use useEffect to simulate fetching initial data when the app is first opened
     useEffect(() => {
-        const url = "http://13.246.42.1:8000/database"
+        const url = "http://13.245.108.66:8000/database"
         axios.get(url).then((res) => {
 
             const dataWithImageUrl = res.data.data.map((item) => ({

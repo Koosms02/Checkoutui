@@ -35,7 +35,7 @@ const FlowerProduct = (product, addToCart) => {
                         <div key={index} className="flex flex-col w-full p-2">
                             {Object.keys(price).map((key) => (
                                 price[key] !== undefined && (
-                                    <div key={key} className="w-full flex flex-col justify-between items-center">
+                                    <div key={key} className="w-full flex flex-col justify-between items-end">
                                         <div className="flex flex-row w-full justify-between pr-2">
                                             <p>{`${key}: `}</p>
                                             <p className="font-bold">{price[key]}</p>

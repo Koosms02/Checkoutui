@@ -31,7 +31,9 @@ export function currentWindowSize() {
 
 export function ScrollListener() {
     const [scrollY, setScrollY] = useState(0);
-
+    const setScroll = (value) => {
+        setScrollY(value)
+    }
     useEffect(() => {
         function handleScroll() {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -45,7 +47,7 @@ export function ScrollListener() {
         };
     }, []);
 
-    return scrollY
+    return { scrollY, setScroll }
 }
 
 

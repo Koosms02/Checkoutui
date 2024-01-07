@@ -24,20 +24,23 @@ export function Items(props) {
     }, [props.transCost])
 
     React.useEffect(() => {
-        let total = 0;
-        console.log(cart)
-        // Iterate through each item in the cart and sum their prices
-        cart.forEach((item) => {
-            // Extract the numerical value from the string and convert it to a number
-            console.log(typeof (item.price))
-            const priceValue = parseFloat(item.price.replace("R", "")); // Remove "R" and parse as float
+        if (cart.length != 0) {
 
-            // Add the extracted price value to the total
-            total += priceValue;
-        });
+            let total = 0;
+            console.log(cart)
+            // Iterate through each item in the cart and sum their prices
+            cart.map((item) => {
+                // Extract the numerical value from the string and convert it to a number
+                console.log(typeof (item.price))
+                const priceValue = parseFloat(item.price.replace("R", "")); // Remove "R" and parse as float
 
-        // Update the state with the total price
-        setSubTotalPrice(total);
+                // Add the extracted price value to the total
+                total += priceValue;
+            });
+
+            // Update the state with the total price
+            setSubTotalPrice(total);
+        }
     }, [cart,]);
 
     return (

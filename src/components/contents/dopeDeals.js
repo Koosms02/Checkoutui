@@ -23,7 +23,7 @@ const DopeDealsProduct = (productInfo, addToCart) => {
 
 
                 </div>
-                <div onClick={() => addToCart({ "name": productInfo.name, "categories": productInfo.type })}
+                <div onClick={() => addToCart({ "name": productInfo.name, "categories": productInfo.type, "price": productInfo.price })}
                     className=" hover:bg-blue-300 cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md ">
                     <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
                     <div className="w-2" />

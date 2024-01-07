@@ -37,7 +37,7 @@ const preRolledProduct = (product, addToCart) => {
                                             <p className=" font-bold">{price[key]}</p>
                                         </div>
                                         <div className="h-2" />
-                                        <div onClick={() => addToCart({ "name": product.name, "category": product.type, "price": product.price })}
+                                        <div onClick={() => addToCart({ "name": product.name, "category": product.type, "price": price[key], "quantity": key })}
                                             className=" hover:bg-blue-300 cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md ">
                                             <FontAwesomeIcon icon={faShoppingBasket} color="black" size="3px" />
                                             <div className="w-2" />

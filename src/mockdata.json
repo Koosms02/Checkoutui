@@ -326,24 +326,197 @@
             "name": "Advent Calendar"
         },
         {
+            "Price P/g": "R120",
+            "Price P/3g": "R330",
             "type": "Psychedelics",
             "name": "Albino Penis Envy"
         },
         {
+            "Price P/g": "R75",
+            "Price P/5g": "R350",
             "type": "Psychedelics",
             "name": "Natal Super Strength"
         },
         {
+            "Price P/pot": "R280",
+            "Price P/3pots": "R800",
             "type": "Psychedelics",
             "name": "3g NSS Honey Pot"
         },
         {
+            "Price P/slab": "R450",
             "type": "Psychedelics",
             "name": "3g LeucisticA+Dark Choclate slab"
         },
         {
+            "Price P/10ml": "RRR450",
             "type": "Psychedelics",
             "name": "10ml microdose drops"
+        },
+        {
+            "Price P/10ml": "RR",
+            "type": "Psychedelics",
+            "name": "ONA Spray Card"
+        },
+        {
+            "categories": "THC Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R800",
+            "name": "Sleeping Aid Syringe"
+        },
+        {
+            "categories": "THC Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R100",
+            "name": "RSO capsules"
+        },
+        {
+            "categories": "THC Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R25",
+            "name": "pain capsules"
+        },
+        {
+            "categories": "CBD Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R630",
+            "name": "300mg CBD oil"
+        },
+        {
+            "categories": "CBD Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R770",
+            "name": "600mg CBD oil"
+        },
+        {
+            "categories": "CBD Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R890",
+            "name": "1000mg CBD oil "
+        },
+        {
+            "categories": "CBD Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R960",
+            "name": "3000mg CBD oil "
+        },
+        {
+            "categories": "CBD Medicinal",
+            "type": "Medicinal, Additionals & Merch",
+            "price": "R300",
+            "name": "Muscle Relief Rub"
+        },
+        {
+            "categories": "CBD Medicinal",
+            "type": "Medicinal",
+            "price": "R140",
+            "name": "Lip Balm"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R120",
+            "name": "Single Source Hash-GDP"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R120",
+            "name": "Single Source Hash-Zour Apple"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R120",
+            "name": "Live Rosin Hash by 420FARMZ"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R420",
+            "name": "Dry Sift GH hash"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R80",
+            "name": "BHO indoor Dab"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R50",
+            "name": "ONA Spray Card"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R160",
+            "name": "Lucky Strike Bamboo"
+        },
+        {
+            "categories": "Additionals",
+            "type": "Medicinal",
+            "price": "R700",
+            "name": "Kraft vape Pen"
+        },
+        {
+            "categories": "Mushroom",
+            "type": "Medicinal",
+            "name": "100mg Golden teacher microdose capsules"
+        },
+        {
+            "categories": "Mushroom",
+            "type": "Medicinal",
+            "name": "200mg Golder teacher microdose capsules"
+        },
+        {
+            "categories": "flowers",
+            "type": "deals",
+            "price": "R800",
+            "name": "10 g Wedding Cake"
+        },
+        {
+            "categories": "flowers",
+            "type": "deals",
+            "price": "R800",
+            "name": "20g Lemon Haze"
+        },
+        {
+            "categories": "flowers",
+            "type": "deals",
+            "price": "R1200",
+            "name": "5g Gorilla Glue"
+        },
+        {
+            "categories": "flowers",
+            "type": "deals",
+            "price": "R1200",
+            "name": "3g Bluecorn"
+        },
+        {
+            "categories": "flowers",
+            "type": "deals",
+            "price": "R1200",
+            "name": "2g Blue Cheese"
+        },
+        {
+            "categories": "ediable",
+            "type": "deals",
+            "price": "R800",
+            "name": "1x Mike Bites"
+        },
+        {
+            "categories": "ediabe",
+            "type": "deals",
+            "price": "R800",
+            "name": "1x Nougat"
+        },
+        {
+            "categories": "ediable",
+            "type": "deals",
+            "price": "R800",
+            "name": "1x Cannapop Lollies"
         }
     ]
 }

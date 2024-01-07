@@ -4,10 +4,11 @@ import axios from "axios";
 const makePayment = async (data, subPrice) => {
 
     // const PAYSTACK_SECRET_KEY = "sk_test_55a760dcecbf74df1eebd2c73b5e9038e09a5f57"
+    console.log(data)
     try {
         // console.log(data)
 
-        const url = 'http://13.246.42.1:8000/checkout';
+        const url = 'https://2d69-105-245-120-186.ngrok-free.app/checkout';
 
         //request payload
         //should be obtained in the req.body
@@ -16,6 +17,7 @@ const makePayment = async (data, subPrice) => {
             // "data": req.body.name,
             "amount": amount * 100,
             "email": "Koosms02@gmail.com",
+            "metadata": { "phonenumber": data.phonenumber }
         }
 
 

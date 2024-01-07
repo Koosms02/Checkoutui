@@ -5,7 +5,8 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 const medicinalProduct = (productInfo, addToCart) => {
-    const url = productInfo.imageUrl != undefined ? productInfo.imageUrl : require("../../assets/daw_icon/daw_icon.png")
+    console.log(productInfo)
+    // const url = productInfo.imageUrl != undefined ? productInfo.imageUrl : require("../../assets/daw_icon/daw_icon.png")
 
     // addToCart()
     return (
@@ -23,7 +24,7 @@ const medicinalProduct = (productInfo, addToCart) => {
 
 
                 </div>
-                <div onClick={() => addToCart({ "name": productInfo.name, "categories": productInfo.type })}
+                <div onClick={() => addToCart({ "name": productInfo.name, "categories": productInfo.type, "price": productInfo.price })}
                     className=" hover:bg-blue-300 cursor-pointer bg-blue-700 w-full flex justify-center items-center h-[20px] rounded-md ">
                     <FontAwesomeIcon icon={faShoppingBasket} color="black" size="5px" />
                     <div className="w-2" />
