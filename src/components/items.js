@@ -54,7 +54,7 @@ export function Items(props) {
                 {
                     cart.map((product) => (
 
-                        <div className="w-full-20 flex flex-row p-2  justify-between items-center m-2 h-20 bg-blue-400">
+                        <div className="w-full-20 flex flex-row p-2  justify-between items-center m-2 h-20 bg-blue-400 rounded-md">
                             <div>
                                 <p>{product.name}</p>
                                 <p>{product.price}</p>

@@ -8,7 +8,7 @@ const makePayment = async (data, subPrice) => {
     try {
         // console.log(data)
 
-        const url = 'https://2d69-105-245-120-186.ngrok-free.app/checkout';
+        const url = 'https://dawdispensary.com/checkout';
 
         //request payload
         //should be obtained in the req.body
@@ -17,7 +17,7 @@ const makePayment = async (data, subPrice) => {
             // "data": req.body.name,
             "amount": amount * 100,
             "email": "Koosms02@gmail.com",
-            "metadata": { "phonenumber": data.phonenumber }
+            // "metadata": { "phonenumber": data.phonenumber }
         }
 
 

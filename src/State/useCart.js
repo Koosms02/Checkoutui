@@ -39,10 +39,12 @@ export const CartProvider = ({ children }) => {
     const addToCart = (item) => {
         const uniqueId = itemIdCounter++;
         const itemWithId = { ...item, id: uniqueId };
+        alert(itemWithId.name + " was added to cart");
         dispatch({ type: "ADD_TO_CART", payload: itemWithId });
     }
 
     const removeFromCart = (item) => {
+        alert(" removed to cart");
         dispatch({ type: "REMOVE_FROM_CART", payload: item })
     }
 

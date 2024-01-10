@@ -16,14 +16,14 @@ const DataProvider = ({ children }) => {
 
     // Use useEffect to simulate fetching initial data when the app is first opened
     useEffect(() => {
-        const url = "http://13.245.108.66:8000/database"
+        const url = "https://dawdispensary.com/database"
         axios.get(url).then((res) => {
 
             const dataWithImageUrl = res.data.data.map((item) => ({
                 ...item,
                 imageUrl: null, // You can set a default image URL or leave it empty
             }));
-
+            // console.log(dataWithImageUrl)
             setDataList(dataWithImageUrl)
 
             // console.log("fetching the data")

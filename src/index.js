@@ -20,6 +20,12 @@ const router = createBrowserRouter([
       <App />
 
   },
+  {
+    path: "/confirmation",
+    element:
+      <OrderPlaced />
+
+  },
 
   {
     path: "/checkout",
@@ -27,10 +33,10 @@ const router = createBrowserRouter([
       <CheckOut />
 
   },
-  {
-    path: "/payment",
-    element: <OrderPlaced />,
-  },
+  // {
+  //   path: "/payment",
+  //   element: <OrderPlaced />,
+  // },
 ]);
 
 

@@ -10,11 +10,11 @@ const medicinalProduct = (productInfo, addToCart) => {
 
     // addToCart()
     return (
-        <div className=" bg-white  flex flex-row h-[120px] overflow-x-auto-hidden   w-full flex-row rounded">
+        <div className=" bg-white  flex flex-row h-[120px] overflow-x-auto-hidden   w-full flex-row rounded-md">
 
 
             {/* Information */}
-            <div className="flex flex-col justify-start items-start h-full w-full bg-white p-2">
+            <div className="flex flex-col justify-start items-start h-full w-full bg-white p-2 rounded-md">
 
                 <div className="flex flex-row w-full h-20 items-start justify-between ">
                     <p className="font-bold">{productInfo.name}</p>

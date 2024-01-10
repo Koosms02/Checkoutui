@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 // imageUrlList
-import { currentWindowSize } from "../../Utils/utils";
+import { currentWindowSize, imageUrlList } from "../../Utils/utils";
 import usecart from "../../State/useCart";
 import ediableProduct from "./ediables";
 import FlowerProduct from "./flower";
 import psychedelicsProduct from "./psychedelics";
 import preRolledProduct from "./pre_rolled"
-import productJson from "../../mockdata.json";
+// import productJson from "../../mockdata.json";
 import MedicinalProduct from "./medicinal"
 import Deals from "./dopeDeals"
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -35,8 +35,8 @@ export default function contents() {
             { "name": "dope deals", "selected": true },
             { "name": "Flowers", "selected": false },
             { "name": "Psychedelics", "selected": false },
-            { "name": "Ediables", "selected": false },
-            { "name": "pre-rolled&vapes", "selected": false },
+            { "name": "Edibles", "selected": false },
+            { "name": "pre-rolled & vapes", "selected": false },
             { "name": "Medicinal", "selected": false },
         ])
 
@@ -71,29 +71,38 @@ export default function contents() {
     //useEffect
     React.useEffect(() => {
 
-        const products = []
-        // const Data = Object.values(dataList)
-        const Products = productJson.data
+        // const products = []
+        const Data = Object.values(dataList)
+        // const Products = productJson.data
 
-        if (dataList.length == 0) {
+        if (dataList.length != 0) {
 
-            // Data.forEach((items, index) => {
-            //     for (let i = 0; i < imageUrlList.length; i++) {
-            //         if (items.name.toLowerCase().includes(imageUrlList[i].name.toLowerCase())) {
-            //             Data[index].imageUrl = imageUrlList[i].url
-            //         }
-            //     }
-            // })
+            Data.forEach((items, index) => {
+                for (let i = 0; i < imageUrlList.length; i++) {
+                    if (items.name != undefined) {
 
+                        if (items.name.toLowerCase().includes(imageUrlList[i].name.toLowerCase())) {
+                            Data[index].imageUrl = imageUrlList[i].url
+                        }
+                    }
+                }
+            })
+            // console.log(Data)
             //use Data[0]
             // console.log(productJson.data)
 
-            const Flowers = Products.filter(item => item.type.toLowerCase() == "flowers")
-            const Dope_deals = Products.filter(item => item.type.toLowerCase() == "deals")
-            const Ediables = Products.filter(item => item.type.toLowerCase() == "ediables")
-            const Pre_rolled = Products.filter(item => item.type.toLowerCase() == "pre-rolled&vapes")
-            const Medicinal = Products.filter(item => item.type.toLowerCase() == "medicinal")
-            const Psychedelics = Products.filter(item => item.type.toLowerCase() == "psychedelics")
+            const Flowers = Data.filter(item => item.type.toLowerCase() == "flowers")
+            const Dope_deals = Data.filter(item => item.type.toLowerCase() == "deals")
+            const Ediables = Data.filter(item => item.type.toLowerCase() == "ediables")
+            const Pre_rolled = Data.filter(item => item.type.toLowerCase() == "pre-rolled&vapes")
+            const Medicinal = Data.filter(item => item.type.toLowerCase() == "medicinal")
+            const Psychedelics = Data.filter(item => item.type.toLowerCase() == "psychedelics")
+
+            console.log(Pre_rolled)
+            console.log(Psychedelics)
+            console.log(Medicinal)
+            console.log(Dope_deals)
+
 
             setFlowers(Flowers)
             setPrerolled(Pre_rolled)
@@ -175,22 +184,61 @@ export default function contents() {
 
                     {categories[1].selected === true &&
 
-                        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3  w-full h-full overflow-y-auto items-start justify-start  bg-black">
-                            {flowers.length != 0 &&
-                                flowers.filter((prod) => {
-                                    if (searchTerm == null) return prod
-                                    else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                        return prod
-                                }).map((pro) => (FlowerProduct(pro, addToCart)))
-                            }
-                        </div>}
+                        // <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3  w-full h-full overflow-y-auto items-start justify-start  bg-black">
+                        //     {flowers.length != 0 &&
+                        //         flowers.filter((prod) => {
+                        //             if (searchTerm == null) return prod
+                        //             else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                        //                 return prod
+                        //         }).map((pro) => (FlowerProduct(pro, addToCart)))
+                        //     }
+                        // </div>}
+                        <div className="flex flex-col w-full h-full overflow-y-auto items-start justify-start bg-black">
+                            {flowers.length !== 0 &&
+                                Object.entries(
+                                    flowers.reduce((acc, productInfo) => {
+                                        const category = productInfo.Category;
+                                        if (!acc[category]) {
+                                            acc[category] = [];
+                                        }
+                                        acc[category].push(productInfo);
+                                        return acc;
+                                    }, {})
+                                )
+                                    // .filter((prod) => {
+                                    //     console.log(prod)
+                                    //     for (let i = 0; i < prod.length; i++) {
+                                    //         console.log(prod[i][0].name)
+
+
+                                    //         for (let k = 0; k < prod.length; k++) {
+                                    //             if (searchTerm == null) return prod
+                                    //             else if (prod[i][k].name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    //                 return prod
+
+                                    //         }
+
+                                    //     }
+                                    // })
+                                    .map(([category, categoryDeals]) => (
+                                        <div key={category} className="mb-4">
+                                            <h2 className="text-white text-xl font-bold mb-2">{category}</h2>
+                                            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                                {categoryDeals.map((pro) => FlowerProduct(pro, addToCart))}
+                                            </div>
+                                        </div>
+                                    ))}
+                        </div>
+
+                    }
+
 
 
                     {/* psychedelics */}
 
                     {categories[2].selected === true &&
 
-                        <div className="  grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-1 w-full  h-screen overflow-y-auto items-start justify-start  bg-black">
+                        <div className=" grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-2 w-full  h-screen flex overflow-y-auto  bg-black overflow-y-auto items-start justify-start ">
                             {psychedelics.length != 0 &&
                                 psychedelics.filter((prod) => {
                                     if (searchTerm == null) return prod
@@ -204,7 +252,7 @@ export default function contents() {
                     {/* ediables */}
                     {categories[3].selected === true &&
 
-                        <div className=" grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-3 w-full h-full overflow-y-auto items-start justify-start  bg-black">
+                        <div className=" grid smgrid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-3 w-full h-full overflow-y-auto items-start justify-start  bg-black">
                             {ediable.length != 0 &&
                                 ediable.filter((prod) => {
                                     if (searchTerm == null) return prod
@@ -218,15 +266,26 @@ export default function contents() {
 
                     {categories[4].selected === true &&
 
-                        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3  w-full h-full overflow-y-auto items-start justify-start  bg-black">
-                            {preRolled.length != 0 &&
-                                preRolled.filter((prod) => {
-                                    if (searchTerm == null) return prod
-                                    else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                        return prod
-                                }).map((pro) => (
-                                    preRolledProduct(pro, addToCart)))
-                            }
+                        <div className="flex flex-col w-full h-full overflow-y-auto items-start justify-start bg-black">
+                            {preRolled.length !== 0 &&
+                                Object.entries(
+                                    preRolled.reduce((acc, productInfo) => {
+                                        const category = productInfo.Category;
+                                        if (!acc[category]) {
+                                            acc[category] = [];
+                                        }
+                                        acc[category].push(productInfo);
+                                        return acc;
+                                    }, {})
+                                )
+                                    .map(([category, categoryDeals]) => (
+                                        <div key={category} className="mb-4">
+                                            <h2 className="text-white text-xl font-bold mb-2">{category}</h2>
+                                            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                                {categoryDeals.map((pro) => preRolledProduct(pro, addToCart))}
+                                            </div>
+                                        </div>
+                                    ))}
                         </div>}
                     {/* medicinal */}
 

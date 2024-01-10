@@ -6,9 +6,10 @@ import { currentWindowSize } from "../Utils/utils"
 import makePayment from "../api/payment"
 import PropTypes from 'prop-types';
 import usecart from "../State/useCart";
+// import { Navigate } from "react-router-dom";
 // import delivery_locations from "../../Utils/delivery_locations"
 
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const delivery_locations = [
     { "main_area": "PTA 1", "locations": ["Centurion", "Irene", "MidStream", "Sinoville", "Montana", "Brooklyn", "Hatfield", " Pretoria East"], "price": "100", },
@@ -24,7 +25,7 @@ const delivery_locations = [
 export function Form(props) {
 
     const w = currentWindowSize().innerWidth
-    // const Navigate = useNavigate()
+    const Navigate = useNavigate()
     const { cart } = usecart()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [movePage, setMovePage] = useState({
@@ -87,6 +88,8 @@ export function Form(props) {
 
             if (paymentChoice.cash == true) {
                 //navigate and show a message 
+                //store user information to the spreedsheet
+                Navigate('/confirmation')
             } else {
 
                 const link = await makePayment(userInfo, subPrice);
@@ -108,12 +111,12 @@ export function Form(props) {
     return (
         <div className='flex flex-start flex-col h-screen pl-10 pr-10 overflow-y-auto w-full bg-black  '>
 
-            {w < 921 && <div className='fixed flex w-full justify-between h-16 items-center pr-10  '>
+            {w < 921 && <div className='fixed flex w-full justify-between h-16 items-center pr-10 bg-black  '>
                 <h3 className='text-white'>DAW Dispensary</h3>
                 <div className="flex flex-row">
-                    <p onClick={() => props.setShowItems(true)} className="hover:cursor-pointer text-white">view products</p>
+                    <p onClick={() => props.setShowItems(true)} className="hover:cursor-pointer text-white">products</p>
                     <div className="w-4" />
-                    < p className="text-white pr-10">price</p>
+                    < p className="text-white pr-10">R {subPrice}</p>
                 </div>
             </div>}
 
