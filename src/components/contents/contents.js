@@ -241,9 +241,13 @@ export default function contents() {
                         <div className=" grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5   gap-2 w-full  h-screen flex overflow-y-auto  bg-black overflow-y-auto items-start justify-start ">
                             {psychedelics.length != 0 &&
                                 psychedelics.filter((prod) => {
+                                 
+                                    if(prod.name!=undefined) {
                                     if (searchTerm == null) return prod
                                     else if (prod.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                        return prod
+                                        return prod} 
+
+                                    return prod
                                 }).map((productInfo, index) => (
                                     psychedelicsProduct(productInfo, addToCart)))
                             }
